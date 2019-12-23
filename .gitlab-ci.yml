@@ -1,0 +1,8 @@
+build:
+  image: mfisherman/texlive
+  script:
+    - cd src && make clean && make
+  artifacts:
+    paths:
+    - src/main.pdf
+    

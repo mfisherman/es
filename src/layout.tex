@@ -1,0 +1,102 @@
+
+
+\usepackage{lscape}
+\usepackage[english]{babel}
+
+\usepackage{tabularx}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,epsfig,epstopdf,titling,url,array}
+\usepackage[a4paper,margin=2cm,footskip=1cm]{geometry}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage{fancyhdr}
+
+
+\pagestyle{fancy}
+
+\setlength{\columnsep}{1.5cm}
+\setlength{\columnseprule}{0.2pt}
+
+\fancypagestyle{IHA-fancy-style}{%
+\fancyhf{} %Clear header and footer
+%\fancyhead[LE,RO]{\slshape \rightmark} % section
+%\fancyhead[LO,RE]{\slshape \leftmark} %chapter
+
+\lhead{\makebox[\columnwidth]{ \leftmark }} %\slshape \leftmark \makebox[\columnwidth]{ \leftmark }
+\rhead{\makebox[\columnwidth]{ \leftmark }} %\slshape \leftmark
+
+
+\lfoot{\makebox[\columnwidth]{\thepage}}
+\rfoot{\makebox[\columnwidth]{\number\numexpr\value{page}+1}\stepcounter{page}}
+
+\renewcommand{\headrulewidth}{0.4pt} %Line at the header visible
+\renewcommand{\footrulewidth}{0.0pt}} %Line at the footer visible
+
+
+\pagestyle{IHA-fancy-style}
+
+
+\newtheoremstyle{defstyle}
+	% Abstand oben
+	{5pt}
+	% Abstand unten
+	{5pt}
+	% Schriftart
+	{\normalfont} %original: \normalfont
+	% Zeileneinzug (leer = kein Zeileneinzug, \parindent = Absatz-Zeileneinzug)
+	{}
+	% Titel Schriftart
+	{\normalfont\bfseries}
+	% Zeichen nach dem Titel
+	{:} 
+	% Leerraum nach dem Titel
+	{ }
+	% Lehrsatzkopf definieren (leer = normal)
+	{#3}
+
+\newtheoremstyle{thmstyle}
+	% Abstand oben
+	{10pt} %original: 10pt
+	% Abstand unten
+	{10pt} %original: 10pt
+	% Schriftart
+	{\normalfont} %original: \normalfont
+	% Zeileneinzug (leer = kein Zeileneinzug, \parindent = Absatz-Zeileneinzug)
+	{}
+	% Titel Schriftart
+	{\normalfont\bfseries}
+	% Zeichen nach dem Titel
+	{:} 
+	% Leerraum nach dem Titel
+	{ }
+	% Lehrsatzkopf definieren (leer = normal)
+	{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+
+\theoremstyle{defstyle}
+% Definition
+\newtheorem*{definition}{Definition}
+
+\theoremstyle{thmstyle}
+% 
+\newtheorem*{theorem}{Theorem}
+% Beachte
+\newtheorem*{tnote}{Note}
+
+% Beispiel
+\newtheorem*{example}{Example}
+
+\newenvironment{note}
+	{\begin{snugshade}\begin{tnote}}
+	{\end{tnote}\end{snugshade}}
+	
+\newenvironment{highlight}
+	{\begin{snugshade}}
+	{\end{snugshade}}
+	
+	
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}

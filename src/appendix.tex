@@ -1,0 +1,94 @@
+\section{Appendix}
+
+\subsection{Derivative}
+
+	\begin{tabular}{l|l}
+		$f(x)$ & $F(x)$ \\ \hline
+
+		$ x^n $   &   $ \frac{1}{n+1} x^{n+1} $ \\
+		$ (ax+b)^n $  &  $ \frac{1}{a\cdot(n+1)} (ax+b)^{n+1} $ \\
+		$ \sqrt x $  &  $ \frac{2}{3} x^{ \frac{3}{2} } $ \\
+		$ \sqrt[n] x $  &  $ \frac{n}{n+1} x^{ \frac{1}{n}+1 } $ \\
+		$ \frac{1}{ax+b} $  &  $ \frac{1}{a} \ln |ax+b| $ \\
+		$ \frac{ax+b}{cx+d} $  &  $ \frac{ax}{c}-\frac{ad-bc}{c^2} \ln |cx+d| $ \\
+		$  $  &  $  $ \\
+		$ \frac{1}{x^2-a^2} $  &  $ \frac{1}{2a} \ln { \big| \frac{x-a}{x+a} \big| } $ \\
+		$ \sqrt{a^2+x^2} $  &  $ \frac{x}{2} f(x) + \frac{a^2}{2} \ln ( x+f(x) ) $ \\
+		$ \sqrt{a^2-x^2} $  &  $ \frac{x}{2} \sqrt{a^2-x^2} - \frac{a^2}{2} \arcsin \frac{x}{|a|}  $ \\
+		$ \sqrt{x^2-a^2} $  &  $ \frac{x}{2} f(x) - \frac{a^2}{2} \ln {( x+f(x) )} $ \\
+		$ \frac{1}{\sqrt{x^2+a^2}} $  &  $ \ln( x+\sqrt{x^2+a^2} ) $ \\
+		$ \frac{1}{\sqrt{x^2-a^2}} $  &  $ \ln( x+\sqrt{x^2-a^2} ) $ \\
+		$ \frac{1}{\sqrt{a^2-x^2}} $  &  $ \arcsin( \frac{x}{|a|} ) $ \\
+		$ \frac{1}{\sqrt{1-x^2}} $  &  $ \arcsin( x ) $ \\
+		$ \frac{-1}{\sqrt{1-x^2}} $  &  $ \arccos(x) $ \\
+		$ \frac{1}{x^2+a^2} $  &  $ \frac{1}{a} \arctan(\frac{x}{a}) $ \\
+		$ \frac{-1}{1+x^2} $  &  $ \operatorname{arccot}(x) $ \\
+		$ \frac{1}{\sqrt{x^2+1}} $  &  $ \operatorname{arsinh} (x) $ \\
+		$ \frac{-1}{\sqrt{x^2-1}} $  &  $ \operatorname{arcosh} (x) $ \\
+		$ \frac{1}{1-x^2} $  &  $ \operatorname{artanh} (x) $ \\
+		$  $  &  $  $ \\
+		$ \sin(ax+b) $  &  $-\frac{1}{a}\cos(ax+b)  $ \\
+		$ \cos(ax+b) $  &  $ \frac{1}{a}\sin(ax+b) $ \\
+		$ \tan(x) $  &  $ -\ln|\cos(x)| $ \\
+		$ \cot(x) $  &  $ \ln |\sin(x)| $ \\
+	\end{tabular}
+	
+	\hspace{-20pt}
+	\begin{tabular}{l|l}
+		$f(x)$ & $F(x)$ \\ \hline
+		
+		$ \frac{1}{\sin(x)} $  &  $ \ln \left|\tan(\frac{x}{2})\right| $ \\
+		$ \frac{1}{\cos(x)} $  &  $ \ln \left|\tan(\frac{x}{2}+\frac{\pi}{4})\right| $ \\
+		$ \sin^2(x) $  &  $ \frac{1}{2} (x-\sin(x)\cos(x)) $ \\
+		$ \cos^2(x) $  &  $ \frac{1}{2} (x+\sin(x)\cos(x)) $ \\
+		$ \tan^2(x) $  &  $ \tan(x)-x $ \\
+		$ \cot^2(x) $  &  $ -\cot(x)-x $ \\
+		$ \arcsin(x) $  &  $ x \arcsin(x) + \sqrt{1-x^2} $ \\
+		$ \arccos(x) $  &  $ x \arccos(x) - \sqrt{1-x^2} $ \\
+		$ \arctan(x) $  &  $ x \arctan(x) - \frac{1}{2} \ln (1+x^2) $ \\
+		$ \sin^n(x) $  &  $ \scriptstyle s_n=-\frac{1}{n} \sin^{n-1}x \cos x+\frac{n-1}{n} s_{n-2} $ \\
+		$  $  &  $ \scriptstyle s_0 = x\quad s_1 = - \cos(x) $ \\
+		$ \cos^n(x) $  &  $ \scriptstyle c_n=\frac{1}{n} \sin x \cos^{n-1} x + \frac{n-1}{n} c_n $ \\
+		$  $  &  $ \scriptstyle c_0 = x\quad c_1 = \sin(x) $ \\
+		$ \sinh(x) $  &  $ \cosh(x)\quad \text{ und umgekehrt} $ \\
+		$ \tanh(x) $  &  $ \ln(\cosh(x)) $ \\
+		$  $  &  $  $ \\
+		$ \frac{f'(x)}{f(x)} $   &   $ \ln {| f(x) |} $ \\
+		$ \ln |x| $  &  $ x \cdot (\ln |x| - 1) $ \\
+		$ \frac{1}{x}(\ln x)^n $  &  $ \frac{1}{n+1} (\ln x)^{n+1} \quad \scriptstyle  n \neq -1 $ \\
+		$ \frac{1}{x}\ln x^n $  &  $ \frac{1}{2n} (\ln x^n)^{2} \quad \scriptstyle  n \neq 0 $ \\
+		$ \frac{1}{x \ln x} $  &  $ \ln |\ln x| \quad \scriptstyle x>0,x\neq 1 $ \\
+		$ a^{bx} $  &  $ \frac{1}{b \ln a} a^{bx} $ \\
+		$ x\cdot e^{cx} $  &  $ \frac{cx-1}{c^2} \cdot e^{cx} $ \\
+		$ x^n \ln x $  &  $ \frac{x^{n+1}}{n+1} \left( \ln x - \frac{1}{n+1} \right) \quad \scriptstyle  n \neq -1 $ \\
+		$ e^{ax} p(x) $  &  $ e^{ac} (  a^{-1} p(x) - a^{-2} p'(x)+ $ \\
+		$  $  &  $ \ldots+(-1)^na^{-n-1}p^{(n)}(x) ) $ \\
+		$  $  &  $ p\text{: Polynom }n\text{-ten Grades} $ \\
+		$ \scriptstyle e^{cx} \sin (ax+b)  $  &  $ \frac{e^{cx} \left( c \sin (ax+b)-a \cos(ax+b) \right)}{a^2+c^2}  $ \\
+		$ \scriptstyle e^{cx} \cos (ax+b)  $  &  $ \frac{e^{cx} \left( c \cos (ax+b)+a \sin(ax+b) \right)}{a^2+c^2}  $ \\
+	\end{tabular}
+	
+	
+	\renewcommand\arraystretch{1.4}
+	\begin{tabular}{l|l}
+		$f(x)$ & $f'(x)$ \\ \hline
+
+		$ x^n $   &   $ nx^{n-1} $ \\
+		$ \sqrt x $  &  $ \frac{1}{2 \sqrt x} $ \\
+		$ \sqrt[n] x $  &  $ \frac{1}{n} {x}^{ \frac{1}{n} -1 } $ \\
+		$ \frac{1}{f(x)} $  &  $ \frac{-f'(x)}{(f(x))^2} $ \\
+		$ \tan(x) $  &  $ \tan^2(x)+1 = \frac{1}{\cos^2(x)} $ \\
+		$ \cot(x) $  &  $ -(1 + \cot^2(x)) = \frac{-1}{\sin^2(x)} $
+	\end{tabular}
+
+	\hspace{-20pt}
+	\begin{tabular}{l|l}
+		$f(x)$ & $f'(x)$ \\ \hline
+		
+		$ \ln |x| $  &  $ \frac{1}{x} $ \\
+		$ \log_a |x| $  &  $ \frac{1}{x \ln a} = \log_a(e) \frac{1}{x} $ \\
+		$ a^{cx} $  &  $ a^{cx} \cdot c \ln a $ \\
+		$ x^x $  &  $ x^x \cdot (1+\ln x) \quad \scriptstyle x > 0 $ \\
+		$ (x^x)^x $  &  $ (x^x)^x(x+2x\ln(x)) \quad \scriptstyle x > 0 $ \\
+		$ x^{(x^x)} $  &  $ x^{(x^x)}(x^{x-1}+\ln x \cdot x^x (1+\ln x))) $ 
+	\end{tabular}

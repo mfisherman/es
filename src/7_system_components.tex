@@ -1,0 +1,112 @@
+
+% %NOTE:
+% % CHECKED WITH SLIDES: YES!
+% % CHECKED WITH EXERCISES: NO -- TODO
+% % MISSING: -
+
+\section{System Components}
+\subsection{General Purpose Processors}
+
+
+\subsubsection{Properties}
+\begin{itemize}[noitemsep]
+\item High Performance: Use of parallelism, optimized circuits and technology
+\item Complex memory architecture
+\item Not suited for real-time applications: times are highly unpredictable due to intensive resource sharing and dynamic decisions
+\item Good average performance
+\item High power consumption
+\end{itemize}
+
+\subsubsection{Multicore Processors}
+Properties
+\begin{itemize}[noitemsep]
+\item Higher execution performance by parallelism
+\item useful in high-performance embedded systems (autonomous driving)
+\item Disadvantages and problems for embedded systems:
+	\begin{itemize}[noitemsep]
+	\item Increased interference on shared resources (buses, shared caches)
+	\item Increased timing uncertainty
+	\item Often no parallelism in embedded applications
+	\end{itemize}
+\end{itemize}
+
+Examples
+\begin{itemize}[noitemsep]
+\item Xeon Phi
+\item Oracle Sparc
+\end{itemize}
+
+Domains
+\begin{itemize}[noitemsep]
+\item Image and Audio processing
+\item Signal Processing
+\item Scientific computing
+\item Control
+\end{itemize}
+
+\subsection{System Specialization}
+Main difference between general purpose highest 
+volume microprocessors and embedded systems is 
+specialization.
+\subsubsection{Flexibility}
+\begin{itemize}[noitemsep]
+\item application domain specific systems shall cover a class of 
+applications
+\item some flexibility is required to account for late changes, 
+debugging
+\end{itemize}
+
+\subsubsection{Examples}
+\begin{itemize}[noitemsep]
+\item Code-size efficiency: RISC designed for run-time efficiency. Many instructions for simple job
+\item Heterogeneous registers: Different functionalities for each register vs. general purpose register
+\item Specified memory banks
+\end{itemize}
+
+
+\subsubsection{Microcontroller}
+\begin{itemize}[noitemsep]
+\item for control-dominant applications
+\item Short latency times
+\item Low power consumption
+\item Suited for real-time
+applications 
+\end{itemize}
+
+\subsection{Digital Signal Processors/VLIW}
+\subsubsection{General}
+\begin{itemize}[noitemsep]
+\item Streaming oriented systems
+with mostly periodic 
+behavior 
+\item Application examples: signal processing, control 
+engineering
+\item use of parallel hardware units (VLIW)
+\item high data throughput
+\item specialized memory
+\item suited for real-time
+applications
+\end{itemize}
+
+\subsubsection{Very Long Instruction Word - VLIW}
+Key idea: detection of possible parallelism to be done by compiler, not by hardware at run-time (inefficient). VLIW: parallel operations (instructions) encoded in one long word (instruction packet), each instruction controlling one functional unit.
+
+
+\subsection{Programmable Hardware - FPGA}
+\begin{itemize}[noitemsep]
+\item Granularity of logic units: Gate, tables, memory, functional blocks (ALU, control, data 
+path, processor)
+\item Communication network: Crossbar, hierarchical mesh, tree
+\item Reconfiguration: fixed at production time, once at design time, dynamic during run-time
+\end{itemize}
+
+\subsection{Application Specific Circuits - ASICs}
+\begin{itemize}[noitemsep]
+\item Custom-designed circuits necessary if ultimate speed or energy efficiency is the goal and large numbers can be sold
+\item Problems: long design times, lack of flexibility (changing standards) and high costs
+\end{itemize}
+
+\subsection{System on a Chip}
+A system on a chip or system on chip (SoC or SOC) is an integrated circuit (IC) that integrates all sniper components of a computer or other electronic system into a single chip. It may contain digital, analog, mixed-signal, and often radio-frequency functions—all on a single chip substrate. SoCs are very common in the mobile electronics market because of their low power consumption. A typical application is in the area of embedded systems.
+
+\cleardoublepage

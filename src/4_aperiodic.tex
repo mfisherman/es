@@ -1,0 +1,486 @@
+
+
+% %NOTE:
+% % CHECKED WITH SLIDES: YES!
+% % CHECKED WITH EXERCISES: NO -- TODO
+% % MISSING: Nothing important ;)
+
+\section{Aperiodic Tasks}
+
+event-driven, may have hard, soft, non-
+real-time requirements depending on the specific 
+application
+
+\subsection{FIFO/FCFS - First in, first out/First come, first serve}
+
+\subsubsection{Assumptions}
+\begin{itemize}[noitemsep]
+\item Independent tasks
+\item Non preemptive
+\end{itemize}
+
+\subsubsection{Algorithm}
+Tasks are added to a FIFO data structure. Schedule only depended on the release/start time. If a task needs to execute repeatedly, each successive execution is treated as a new task.
+
+
+\subsection{SJF - Shortest Job First}
+
+\subsubsection{Assumptions}
+\begin{itemize}[noitemsep]
+\item Independent tasks
+\item Non preemptive
+\end{itemize}
+
+\subsubsection{Algorithm}
+Scheduler picks up the task with the shortest execution time from the ready queue.
+
+\subsubsection{Properties}
+Minimizes the average waiting time!
+
+
+\subsection{Shortest remaining time next}
+
+\subsubsection{Assumptions}
+\begin{itemize}[noitemsep]
+\item Independent tasks
+\item Preemptive
+\end{itemize}
+
+\subsubsection{Algorithm}
+As a new task arrives, the scheduler determines which of the ready tasks has the smallest execution time and executes it.
+
+\subsubsection{Properties}
+Attempts to minimize the average waiting time. Dynamic algorithm, so not strictly minimal.
+
+
+
+\subsection{RR - Round Robin}
+
+%TODO - ADD MORE INFORMATION HOW IT WORKS (WHEN A NEW TASK COMES IN/LEAVES/.... ETC)
+\subsubsection{Assumptions}
+\begin{itemize}[noitemsep]
+\item Independent tasks
+\item Preemptive
+\end{itemize}
+
+\subsubsection{Algorithm}
+Task preempted if it exceeds its time quantum, or when it gets done (task has finished its execution).
+
+
+
+
+\subsection{EDD - Earliest Deadline Due}
+\subsubsection{Assumptions}
+\begin{itemize}[noitemsep]
+\item Independent tasks
+\item Equal arrival times
+\item Non preemptive
+\end{itemize}
+
+\subsubsection{Algorithm}
+Jackson’s rule: Given a set of n tasks. Processing in 
+order of non-decreasing deadlines is optimal with respect 
+to minimizing the maximum lateness.
+
+\subsubsection{Properties}
+\begin{itemize}[noitemsep]
+\item Minimize the maximum lateness
+\item Non preemptive
+\end{itemize}
+
+
+
+\subsection{EDF - Earliest Deadline First}
+\subsubsection{Assumptions}
+\begin{itemize}[noitemsep]
+\item Independent tasks
+\item Arbitrary arrival times
+\item Preemptive
+\end{itemize}
+
+\subsubsection{Algorithm}
+Horn’s rule: Given a set of n independent tasks with 
+arbitrary arrival times, any algorithm that at any instant 
+executes the task with the earliest absolute deadline 
+among the ready tasks is optimal with respect to 
+minimizing the maximum lateness.
+
+\begin{tnote}
+Worst case finishing time of task i: $f_i = t + \sum\limits_{k = 1}^{i} c_k(t)$. Where $c_k(t)$ is the remaining worst-case execution time of task k.
+\end{tnote}
+
+\subsubsection{Properties}
+\begin{itemize}[noitemsep]
+\item Minimize the maximum lateness
+\item Preemptive
+\item Any asynchronous task set feasible under EDD is also feasible under EDF
+\item For asynchronous task sets without precedence constraints, EDF* is identical to EDF
+\end{itemize}
+
+
+
+\subsection{EDF*  - Earliest Deadline First}
+\subsubsection{Assumptions}
+\begin{itemize}[noitemsep]
+\item Dependent tasks
+\item Arbitrary arrival times
+\item preemptive
+\item Minimal development effort
+\item Big scheduling overhead
+\item RTOS required
+\item Context switch overhead $\rightarrow$ needs faster CPU than Time-triggered or RM
+\item Flexible, if later on a new process is added. High utilization possible!
+\end{itemize}
+
+
+
+\subsubsection{Algorithm}
+For release times, start at the beginning (no predecessor):
+\begin{enumerate} [noitemsep]
+\item For any initial node of the precedence graph set $r_i^* = r_i$
+\item Elect a task j such that its release time has not been modified 
+but the release times of all immediate predecessors i have 
+been modified. If no such task exists, exit. 
+\item Set $r_j^* = max(r_j, max(r_i^* + C_i, if J_i \rightarrow J_j))$
+\item Return to step 2
+\end{enumerate}
+
+For modification of deadlines, start at the end (no successor)
+\begin{enumerate}[noitemsep]
+\item For any terminal node of the precedence graph set $d_i^* = d_i$
+\item Elect a task i such that its deadline has not been modified but 
+the deadlines of all immediate successors j have been 
+modified. If no such task exists, exit.
+\item Set $d_i^* = min(d_i, min(d_j^* - C_j, if J_i \rightarrow J_j))$
+\item Return to step 2
+\end{enumerate}
+
+
+\subsubsection{Properties}
+\begin{itemize}[noitemsep]
+\item The problem of scheduling a set of n tasks with precedence constraints
+(concurrent activation) can be solved in polynomial time complexity if tasks are preemptable.
+\item The EDF* algorithm determines a feasible schedule in the 
+case of tasks with precedence constraints if there exists one. 
+\item Minimize the maximum lateness
+\end{itemize}
+
+
+\subsection{LDF - Latest Deadline First}
+
+\subsubsection{Assumptions}
+\begin{itemize}[noitemsep]
+\item Tasks with precedence relations
+\item Synchronous arrival times
+\item Non preemptive
+\end{itemize}
+
+
+\subsubsection{Algorithm}
+%TODO: WRITE BETTER, MORE CLEARLY
+Build a dependency graph. Choose from all task which do not have a successor the task with the latest deadline. Extract this task from the dependency graph and add it to the scheduling stack. Repeat until the stack is empty. The schedule is according to the stack.
+This means the last task added to the stack is the first to be executed.
+
+
+\subsubsection{Properties}
+\begin{itemize}[noitemsep]
+\item Minimize the maximum lateness
+\item non preemptive
+\end{itemize}
+
+
+
+\newpage
+
+
+
+
+
+
+
+
+
+
+
+\section{Periodic Tasks}
+
+time-driven, execute critical control activities with hard timing constraints aimed at guaranteeing regular activation rates
+
+\begin{definition}[Periodic Tasks]
+An infinite sequence of identical activities, called instances or jobs that are regularly activated at constant rate with period $T_i$. The activation time of the first instance is called phase $\Phi_i$.
+\end{definition}
+
+\subsection{Model}
+Definitions
+\begin{itemize}[noitemsep]
+\item $\Gamma$:  a set of periodic tasks
+\item $\tau_i$: a generic periodic task
+\item $\tau_{i, j}$: the jth instance of task i
+\item $r_{i, j}$: release time of the jth instance of task i
+\item $s_{i, j}$: start time of the jth instance of task i
+\item $f_{i, j}$: finishing time of the jth instance of task i
+\item $d_{i, j}$: the absolute deadline of the jth instance of task i
+\item $\Phi_i$: phase of task i (release time of its first instance)
+\item $D_i$: relative deadline of task i
+\item $T_i$: periode of task i
+\end{itemize}
+
+\begin{tnote}
+Hypotheses are
+\begin{itemize}[noitemsep]
+\item The instances of a periodic task are 
+regularly activated at a constant rate. ${r_{i, j} = \Phi_i + (j-1)T_i}$. The first task has $j = 1$.
+\item All instances have the 
+same worst case execution time $C_i$
+\item All instances of a periodic task have the 
+same relative deadline $D_i$. Therefore: ${ d_{i, j} = \Phi_i + (j-1)T_i +D_i}$
+\item Often, the relative deadline equals the period $D_i = T_i$
+and therefore $d_{i, j} = \Phi_i + jT_i$
+\item All periodic tasks are independent.
+\item No task can suspend itself
+\item All tasks are released as soon as they arrive.
+\item All overheads in the OS kernel are assumed to be zero.
+\end{itemize}
+
+The meaning of sufficient and necessary
+\begin{itemize}[noitemsep]
+\item sufficient condition C for proposition P: $C \Rightarrow P$
+\item necessary condition C for proposition P: $\lnot C \Rightarrow \lnot P$
+\end{itemize}
+
+\end{tnote}
+
+
+\subsection{RM - Rate Monotonic Scheduling}
+
+\subsubsection{Assumptions}
+\begin{itemize}[noitemsep]
+\item Static priority assignment: Task priorities are assigned to tasks before execution and do 
+not change over time.
+\item RM is intrinsically preemptive: the currently executing task is 
+preempted by a task with higher priority - algorithm is preemptive!
+\item Deadlines
+equal the periods $D_i = T_i$
+\end{itemize}
+
+\subsubsection{Algorithm}
+Each task is assigned a priority. Tasks with 
+higher request rates (that is with shorter periods) will have 
+higher priorities. Tasks with higher priority interrupt tasks 
+with lower priority
+
+\subsubsection{Properties}
+\begin{itemize}[noitemsep]
+\item Optimality: RM is optimal among all fixed-priority 
+assignments in the sense that not other fixed-priority 
+algorithm can schedule a task set that cannot be 
+scheduled by RM
+\item Just a few scheduling overhead
+\item RTOS required
+\item Context-switch-overhead
+\item Flexible, if later on a new process is added (update priority list)
+\end{itemize}
+
+\subsubsection{Theorem}
+\begin{theorem}
+A set of periodic tasks is schedulable with RM if $\sum\limits_{i = 1}^{n} \frac{C_i}{T_i} = U \leq n(2^{1/n} -1)$. This condition is sufficient, but not necessary.
+\end{theorem}
+
+\begin{theorem}
+For the necessary and sufficient test, see at Deadline Monotonic Scheduling. Note, that in this case $D_i = T_i$.
+\end{theorem}
+
+
+
+\subsection{DM - Deadline Monotonic Scheduling}
+
+\subsubsection{Assumptions}
+\begin{itemize}[noitemsep]
+\item Static priority assignment: Task priorities are assigned to tasks before execution and do 
+not change over time.
+\item DM is intrinsically preemptive: the currently executing task is 
+preempted by a task with higher priority
+\item Deadlines may be smaller than the periodic. $C_i \leq D_i \leq T_i$
+\end{itemize}
+
+\subsubsection{Algorithm}
+Each task is assigned a priority. Tasks with 
+smaller relative deadlines will have higher priorities. Tasks 
+with higher priority interrupt tasks with lower priority
+
+\subsubsection{Theorem}
+
+
+\begin{theorem}
+A set of periodic tasks is schedulable with DM if $\sum\limits_{i = 1}^{n} \frac{C_i}{D_i} = U \leq n(2^{1/n} -1)$. This condition is sufficient, but not necessary. So if true, then it works, but if not true then we do not know anything.
+\end{theorem}
+
+
+\begin{definition}[Critical instance]
+The worst case processor demand occurs when all tasks are released simultaneously; that is at their critical instances/A critical instant for any task occurs whenever the task is released with all higher priority tasks.
+\end{definition}
+
+\begin{theorem}
+A measure of the worst case interference for task i can be computed as the sum of the processing times of all higher priority tasks released before some time $t$ where tasks are ordered according to $m \le n \leftrightarrow D_m \le D_n: I_i = \sum_{j = 1}^{i-1}  \lceil \frac{t}{T_j} \rceil C_j$
+\end{theorem}
+
+
+\begin{definition}[Response Time $R_i$]
+The longest response time of a periodic task i is computed, at the critical instant, as the sum of its computation time and the interference due to preemption by higher priority tasks: $R_i = C_i + I_i$
+\end{definition}
+
+
+
+\begin{theorem}
+There is also a necessary and sufficient schedulability test. This test computes the biggest response time $R_i$. Sort first the tasks accordingly. Start with the biggest $i$ first.
+\begin{lstlisting}[mathescape]
+DM_guarantee( $\Gamma$ )
+{
+	//$\Gamma$ is sorted in descending order of priorities. 
+	//So we have $D_i \leq D_{i+1}$. Start with
+	//the biggest $i$ (lowest priority, biggest $D$) first
+	for each ($\tau_i \in \Gamma$)
+	{
+		I = 0;
+		do
+		{
+			R = I + $C_i$;
+			//Biggest Response bigger
+			// than Deadline?
+			if( R > $D_i$)
+				return UNSCHEDULABLE;
+			I = $\sum\limits_{j = 1}^{i - 1} \lceil R/T_j \rceil C_j $ ;
+		}while(I + $C_i$ > R);
+	}
+	return SCHEDULABLE;
+}
+
+\end{lstlisting}
+
+\end{theorem}
+
+\subsection{EDF Scheduling - Earliest Deadline First}
+
+\subsubsection{Assumptions}
+\begin{itemize}[noitemsep]
+\item Dynamic priority assignment
+\item Intrinsically preemptive
+\item $D_i \leq T_i$
+\end{itemize}
+
+\subsubsection{Algorithm}
+The currently executing task is preempted whenever another periodic instance with earlier absolute deadline $d_{i, j}$ becomes active.
+
+
+\subsubsection{Properties}
+Optimality: No other algorithm can schedule a set of 
+periodic tasks if the set that can not be scheduled by EDF.
+
+
+\subsubsection{Theorem}
+\begin{theorem}
+A necessary and sufficient schedulability test if $D_i = T_i$: A set of periodic tasks is schedulable with EDF if and only if $\sum\limits_{i = 1}^{n} \frac{C_i}{T_i } = U \leq 1$. \\
+If the utilization satisfies $U > 1$, then there is no valid schedule. \\
+If the utilization satisfies $U \leq 1$, then there is a valid
+schedule
+\end{theorem}
+
+\begin{theorem}
+A sufficient schedulability test if $D_i \leq T_i$: A set of periodic tasks is schedulable with EDF if $\sum\limits_{i = 1}^{n} \frac{C_i}{D_i } = U \leq 1$.
+\end{theorem}
+
+\subsection{Background Scheduling}
+Simple solution
+for RM and EDF scheduling of periodic 
+tasks.
+\begin{itemize}[noitemsep]
+\item Processing of aperiodic tasks in the background, i.e. if there 
+are no periodic request.
+\item Periodic tasks are not affected.
+\item Response of aperiodic tasks may be prohibitively long and 
+there is no possibility to assign a higher priority to them.
+
+\end{itemize}
+
+
+\subsection{RM - Polling Server}
+
+\subsubsection{Assumption}
+
+\begin{itemize}[noitemsep]
+\item An aperiodic job $J_a$ with computation time $C_a$ and relative deadline $D_a$ that needs to be scheduled.
+\item A periodic server task with period $T_s$ and computation time $C_s$
+\end{itemize}
+
+\subsubsection{Algorithm}
+Introduce an artificial periodic task whose purpose is to service aperiodic requests as soon as possible
+\begin{itemize}[noitemsep]
+\item a server is characterized by a period $T_s$ and a computation time $C_s$
+\item The server is scheduled with the same algorithm used for the 
+periodic tasks and, once active, it serves the aperiodic 
+requests within the limit of its server capacity.
+\item Its priority (period!) can be chosen to match the response 
+time requirement for the aperiodic tasks.
+\end{itemize}
+
+
+\subsubsection{Properties}
+\begin{itemize}[noitemsep]
+\item Aperiodic guarantee of aperiodic activities
+\item Disadvantage: If an aperiodic requests arrives just after the 
+server has suspended, it must wait until the beginning of the 
+next polling period.
+\end{itemize}
+
+\subsubsection{Theorem}
+\begin{theorem}
+A set of periodic tasks and a server task can be executed 
+within their deadlines if $\frac{C_s}{T_s} + \sum\limits_{i = 1}^{n} \frac{C_i}{T_i} \leq (n+1)(2^{1/(n+1)} -1)$. This test is sufficient but not necessary.
+\end{theorem}
+
+\begin{theorem}
+If we have the assumption that an aperiodic task is finished before a new 
+aperiodic request arrives. Assume, we have the computation time $C_a$, deadline $D_a$.
+A sufficient schedulability test is
+$( 1+ \left \lceil{\frac{C_a}{C_s}}\right \rceil  )T_s \leq D_a$
+
+
+\begin{theorem}
+A necessary and sufficient test can be given by applying the algorithm at Deadline Monotonic Scheduling with $D_i = T_i$.
+\end{theorem}
+
+
+\begin{tnote}
+To compute a smaller value $D_a$ of the deadline of the aperiodic task, we can compute $R_a$ with the necessary and sufficient test, and set $D_a = R + T_S$. (Because the task can arrive just after the start of the polling server and we have to add the response time to it).
+\end{tnote}
+
+\subsection{EDF - Total Bandwidth Server}
+
+\subsubsection{Assumptions}
+-
+
+\subsubsection{Algorithm}
+\begin{itemize}[noitemsep]
+\item When the kth aperiodic request arrives at time $t = r_k$, it receives 
+a deadline
+$d_k = max( r_k, d_{k-1}) + \frac{C_k}{U_s}$
+where $C_k$ is the execution time of the request and $U_s$ is the 
+server utilization factor (that is, its bandwidth). By definition, $d_0 = 0$.
+
+\item Once a deadline is assigned, the request is inserted into the 
+ready queue of the system as any other periodic instance
+\item Use the EDF algorithm to schedule all tasks
+\end{itemize}
+
+
+
+\subsubsection{Theorem}
+\begin{theorem}
+Given a set of $n$ periodic tasks with processor utilization $U_p$ and a total bandwidth server with utilization 
+$U_s$, the whole set is schedulable by EDF if and only if $U_p + U_s \leq 1$
+\end{theorem}
+
+
+\end{theorem}
+
+\cleardoublepage

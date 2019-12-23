@@ -1,0 +1,118 @@
+
+
+% %NOTE:
+% % CHECKED WITH SLIDES: YES!
+% % CHECKED WITH EXERCISES: NO -- TODO
+% % MISSING: Stuff about internet of things and trends -- but left out since not relevant
+
+\section{Introduction}
+
+\begin{definition}[Embedded System]
+Information processing systems embedded into a larger product. Goal is not information processing! Information processing is the way to reach a certain goal.
+\end{definition}
+
+\begin{definition}[Hybrid systems]
+The analog and digital system together.
+\end{definition}
+
+\begin{definition}[CPS]
+cyber-physical system. When a system connects the physical world with the digital.
+\end{definition}
+
+\begin{definition}[Reactive system]
+A reactive system is one which is in continual interaction 
+with its environment and executes at a pace determined by 
+that environment.
+\end{definition}
+
+\begin{definition}[Hard real-time constraint]
+ real-time constraint is called hard, if not meeting that constraint could result in a catastrophe“
+\end{definition}
+
+\begin{definition}[Soft real-time constraint]
+All non-hard real-time constraints.
+\end{definition}
+
+\begin{definition}[Guaranteed system response]
+A guaranteed system response has to be explained without statistical arguments.
+\end{definition}
+
+\subsection{Where used?}
+\begin{itemize}[noitemsep]
+\item Logistics
+\item Health Care
+\item Building Automation
+\item Factory Automation
+\item Cars
+\item Consumer Electronics (Microwave)
+\end{itemize}
+
+
+
+\subsection{Characteristics of ES}
+\begin{itemize}[noitemsep]
+\item dependable (zuverl\"assig)
+\begin{itemize}[noitemsep]
+\item Reliability: $R(t)$ is the probability of system working correctly provided that it was working at $t=0$
+\item Maintainability: $M(d) $ is the probability of system working correctly d time units after error occurred
+\item Availability: probability of system working at time t
+\item Safety: no harm to be caused
+\item Security: confidential and authentic communication
+\end{itemize}
+\item efficient
+\begin{itemize}[noitemsep]
+\item Energy efficient
+\item Code-size efficient (especially for systems on a chip)
+\item Run-time efficient
+\item Weight efficient
+\item Cost efficient
+\end{itemize}
+\item Dedicated towards a certain application. Makes no sense, to make the system faster than required
+\item Dedicated user interface
+\item real-time constraints: For real-time systems, right answers arriving too late are wrong.
+\item A guaranteed system response has to be explained without statistical arguments
+\end{itemize}
+
+
+\subsection{ES vs. General Purpose System}
+
+\begin{tabularx}{\textwidth}{ p{7cm}p{5cm} } %
+Embedded Systems & General Purpose System \\ 
+
+\cmidrule{1-2}
+
+Few applications that are \newline
+known at design-time & Broad class of applications.  \\
+Not programmable by end 
+user & Programmable by end user.  \\
+Fixed run-time requirements 
+(additional computing power 
+not useful).  & Faster is better. \\ 
+Criteria: 
+\begin{itemize}[noitemsep]
+\item cost
+\item power consumption
+\item predictability
+\end{itemize}
+
+&
+Criteria:
+\begin{itemize}[noitemsep]
+\item cost
+\item power consumption
+\item average speed
+\end{itemize}
+
+\\
+
+Hard and Soft deadlines, periods... &  Tasks do have timing constraints \\
+Goal: Meet the individual timing requirements & Goal: Minimize the average response time, \newline without any guarantees \\
+
+\cmidrule{1-2}
+
+
+
+\end{tabularx}
+
+
+\cleardoublepage

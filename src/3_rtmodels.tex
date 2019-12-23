@@ -1,0 +1,195 @@
+
+
+% %NOTE:
+% % CHECKED WITH SLIDES: YES!
+% % CHECKED WITH EXERCISES: NO -- TODO
+% % MISSING: Nothing important ;)
+
+
+\section{Real Time Models}
+
+\subsection{Classification}
+\begin{definition} [Preemptive algorithm]
+With preemptive algorithms, the running task can be 
+interrupted at any time to assign the processor to another 
+active task, according to a predefined scheduling policy.
+\end{definition}
+
+\begin{definition} [Non-preemptive algorithm]
+With a non-preemptive algorithm, a task, once started, is 
+executed by the processor until completion.
+\end{definition}
+
+\begin{definition} [Static Algorithm]
+Static algorithms
+are those in which scheduling decisions 
+are based on fixed parameters, assigned to tasks before 
+their activation.
+\end{definition}
+
+\begin{definition}[Dynamic algorithms]
+Dynamic algorithms
+are those in which scheduling 
+decisions are based on dynamic parameters that may 
+change during system execution
+
+\end{definition}
+
+\begin{definition}[Optimal]
+An algorithm is said optimal if it minimizes some given 
+cost function defined over the task set.
+\end{definition}
+
+\begin{definition}[Heuristic]
+An algorithm is said to be heuristic if it tends toward but 
+does not guarantee to find the optimal schedule.
+\end{definition}
+
+\subsection{General}
+
+\begin{definition}[Hard]
+A real-time task is said to be hard, if missing its 
+deadline may cause catastrophic consequences on the 
+environment under control.
+\end{definition}
+
+\begin{definition}[Soft]
+A real-time task is called soft, if meeting its deadline is 
+desirable for performance reasons, but missing its deadline 
+does not cause serious damage to the environment and does 
+not jeopardize correct system behavior.
+\end{definition}
+
+
+
+\subsection{Schedule and Timing}
+
+
+\begin{definition}[Schedule]
+A schedule is an assignment of tasks to the processor, such 
+that each task is executed until completion. It can be defined as an integer step function
+where $ \sigma : \R \rightarrow \N $ denotes the task which is executed at time $t$. 
+\end{definition}
+
+\begin{definition}[Idle]
+If $ \sigma (t) = 0$ then the processor is called idle. So no task is executed.
+\end{definition}
+
+\begin{definition}[Context switch]
+If $\sigma (t) $ changes its value at some time.
+\end{definition}
+
+\begin{definition}[Time slice]
+Interval, in which $\sigma (t) $ is constant.
+\end{definition}
+
+\begin{definition}[Feasible]
+A schedule is said to be feasible, if all task can be completed 
+according to a set of specified constraints.
+\end{definition}
+
+\begin{definition}[schedulable]
+A set of tasks is said to be schedulable, if there exists at 
+least one algorithm that can produce a feasible schedule.
+\end{definition}
+
+
+\subsection{Metrics}
+
+\begin{definition}[Arrival time $a_i$/release time $r_i$]
+Is the time at which a task becomes ready for execution (Waits in ready queue).
+\end{definition}
+
+\begin{definition}[Computation time $C_i$]
+Is the time necessary to the processor for executing the task without interruption.
+\end{definition}
+
+\begin{definition}[Deadline $d_i$]
+Is the absolute time at which a task should be completed.
+\end{definition}
+
+\begin{definition}[Fair Schedule]
+(for the first exercise) a schedule is fair, if every task eventually gets a chance to execute on the processor.
+\end{definition}
+
+\begin{definition}[Finishing time $f_i$]
+Is the time at which a task finishes its execution.
+\end{definition}
+
+\begin{definition}[Lateness $L_i$]
+$L_i = f_i - d_i$, represents the delay of a task 
+completion with respect to its deadline.
+\end{definition}
+
+\begin{definition}[Laxity / slack time $ X_i$]
+$X_i = d_i - a_i -C_i$, is the maximum time a task can be delayed on its activation to complete 
+within its deadline.
+\end{definition}
+
+\begin{definition}[Response time]
+The amount of time it takes to finish executing a task: $response_i = f_i - a_i$.
+\end{definition}
+
+\begin{definition}[Start time $s_i$]
+Is the time at which a task starts its execution.
+\end{definition}
+
+\begin{definition} [Tardiness / exceeding time $ E_i$]
+$E_i = max(0, L_i)$, is the time a task stays active after its deadline.
+\end{definition}
+
+\begin{definition}[Throughput]
+The measure of work done in a unit time interval.
+\end{definition}
+
+\begin{definition}[Utilization]
+Ratio of busy time of the processor to the total time required for all tasks to finish.
+\end{definition}
+
+\begin{definition}[Waiting time]
+Time spent by a task in the ready queue.
+\end{definition}
+
+
+\begin{definition}[Average response time]
+\begin{equation} 
+t_r = \frac{1}{n} \sum\limits_{i = 1}^{n}(f_i - r_i) 
+\end{equation}
+\end{definition}
+
+\begin{definition}[Total completition time]
+\begin{equation}
+t_c = \max_i (f_i) - \min_i ( r_i)
+\end{equation}
+\end{definition}
+
+\begin{definition}[Weighted sum of response time]
+\begin{equation}
+t_w = \frac{ \sum\limits_{i = 1}^{n}w_i(f_i - r_i) }{\sum\limits_{i = 1}^{n} w_i}
+\end{equation}
+\end{definition}
+
+\begin{definition} [Maximum lateness]
+\begin{equation}
+L_{max} = \max_i(f_i - d_i)
+\end{equation}
+\end{definition}
+
+\begin{definition}[Number of late tasks]
+
+\begin{equation}
+ { N_{late} = \sum\limits_{i = 1}^{n} miss(f_i)  }	\qquad
+ { miss(f_i) = \left\{
+	\begin{array}{ll}
+		0  & \mbox{if } f_i \leq d_i \\
+		1 & \mbox{otherwise }
+	\end{array}
+\right.
+}
+\end{equation}
+
+\end{definition}
+
+
+
+\cleardoublepage
